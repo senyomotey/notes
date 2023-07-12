@@ -7,14 +7,14 @@ import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import '../../routes/route_names.dart';
 
-class OnboradingScreenDesktop extends StatefulWidget {
-  const OnboradingScreenDesktop({Key? key}) : super(key: key);
+class OnboardingScreenDesktop extends StatefulWidget {
+  const OnboardingScreenDesktop({Key? key}) : super(key: key);
 
   @override
-  State<OnboradingScreenDesktop> createState() => OnboradingScreenDesktopState();
+  State<OnboardingScreenDesktop> createState() => OnboardingScreenDesktopState();
 }
 
-class OnboradingScreenDesktopState extends State<OnboradingScreenDesktop> with TickerProviderStateMixin {
+class OnboardingScreenDesktopState extends State<OnboardingScreenDesktop> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();

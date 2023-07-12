@@ -11,9 +11,9 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Responsive(
-      mobile: OnboradingScreenMobile(),
-      tablet: OnboradingScreenTablet(),
-      desktop: OnboradingScreenDesktop(),
+      mobile: OnboardingScreenMobile(),
+      tablet: OnboardingScreenTablet(),
+      desktop: OnboardingScreenDesktop(),
     );
   }
 }
