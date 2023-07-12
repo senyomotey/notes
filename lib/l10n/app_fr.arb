@@ -1,0 +1,8 @@
+{
+    "app_title" : "Notes",
+    "notes_empty" : "Créez votre première note",
+    "search_hint" : "Recherche par mot clé...",
+    "search_empty" : "Remarque introuvable. Essayez d'autres mots clés",
+    "title_hint" : "Titre",
+    "body_hint" : "Tapez quelque chose..."
+}
