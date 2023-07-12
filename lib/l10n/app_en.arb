@@ -1,1 +1,8 @@
-{}
+{
+    "app_title" : "Notes",
+    "notes_empty" : "Create your first note",
+    "search_hint" : "Search by the keyword...",
+    "search_empty" : "Note not found. Try other keywords",
+    "title_hint" : "Title",
+    "body_hint" : "Type something..."
+}
