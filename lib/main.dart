@@ -67,19 +67,19 @@ class NotesAppState extends State<NotesApp> with WidgetsBindingObserver {
         //   value: UserProvider.initialize(),
         // ),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Notes',
         // theme: AppThemeData.lightTheme,
         // darkTheme: AppThemeData.darkTheme,
         // themeMode: appProvider.themeMode,
-        localizationsDelegates: const [
+        localizationsDelegates: [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: const [
+        supportedLocales: [
           Locale('en', ''), // English
           Locale('fr', ''), // French
         ],
