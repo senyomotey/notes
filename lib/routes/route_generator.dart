@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:notes/screens/editor/editor.dart';
+import 'package:notes/screens/search/search.dart';
 
 import '../screens/launch/launch.dart';
 import '../screens/onboarding/onboarding.dart';
+import '../screens/read/read.dart';
 import 'route_names.dart';
 
 class RouteGenerator {
@@ -30,6 +33,18 @@ class RouteGenerator {
       //   return CupertinoPageRoute(
       //     builder: (_) => const SignUpScreen(),
       //   );
+
+      case RouteNames.homeScreenRoute:
+        return CupertinoPageRoute(builder: (_) => const OnboardingScreen());
+
+      case RouteNames.searchScreenRoute:
+        return CupertinoPageRoute(builder: (_) => const SearchScreen());
+
+      case RouteNames.editorScreenRoute:
+        return CupertinoPageRoute(builder: (_) => const EditorScreen());
+
+      case RouteNames.readScreenRoute:
+        return CupertinoPageRoute(builder: (_) => const ReadScreen());
 
       default:
         //Goes it this screen if no route is found
