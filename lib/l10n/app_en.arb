@@ -4,5 +4,20 @@
     "search_hint" : "Search by the keyword...",
     "search_empty" : "Note not found. Try other keywords",
     "title_hint" : "Title",
-    "body_hint" : "Type something..."
+    "body_hint" : "Type something...",
+    "save_note_alert" : "Do you want to save changes?",
+    "unsaved_note_alert" : "Are you sure you want to discard the unsaved changes?",
+    "delete_note_alert" : "Are you sure you want to delete this note?",
+    "alert_dialog_negative" : "No",
+    "alert_dialog_positive" : "Yes",
+    "alert_empty_title" : "Enter the title of the note",
+    "alert_empty_body" : "Enter the details of the note",
+    "red" : "red",
+    "orange" : "orange",
+    "yellow" : "yellow",
+    "green" : "green",
+    "blue" : "blue",
+    "indigo" : "indigo",
+    "white" : "white",
+    "page_not_found" : "Page Not Found"
 }

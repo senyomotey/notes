@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
 import '../../routes/route_names.dart';
 
 class LaunchScreenDesktop extends StatefulWidget {
@@ -42,11 +40,13 @@ class LaunchScreenDesktopState extends State<LaunchScreenDesktop> with TickerPro
         (AnimationStatus status) async {
           if (status == AnimationStatus.completed) {
             if (userBox.get('appOpened', defaultValue: false) == true) {
-              if (userBox.get('loggedIn') == true) {
-                Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
-              } else {
-                Navigator.pushReplacementNamed(context, RouteNames.loginScreenRoute);
-              }
+              // if (userBox.get('loggedIn') == true) {
+              //   Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'login'});
+              // } else {
+              //   Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'create'});
+              // }
+
+              Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
             } else {
               Navigator.pushReplacementNamed(context, RouteNames.onboardingScreenRoute);
             }

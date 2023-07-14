@@ -28,8 +28,7 @@ class SearchScreenTabletState extends State<SearchScreenTablet> with TickerProvi
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    double _deviceWidth = MediaQuery.of(context).size.width;
-    double _deviceHeight = MediaQuery.of(context).size.height;
+    double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Container(),

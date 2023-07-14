@@ -10,7 +10,7 @@ class Note {
   String syncAction; // synchronization action to be performed
   bool
       syncStatus; // synchronization status. true means syncronzation was performed and is successful. false means otherwise
-  String createdAt; // date and time the note was created or modified
+  DateTime createdAt; // date and time the note was created or modified
 
   Note({
     required this.id,

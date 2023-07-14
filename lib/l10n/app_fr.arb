@@ -4,5 +4,20 @@
     "search_hint" : "Recherche par mot clé...",
     "search_empty" : "Remarque introuvable. Essayez d'autres mots clés",
     "title_hint" : "Titre",
-    "body_hint" : "Tapez quelque chose..."
+    "body_hint" : "Tapez quelque chose...",
+    "save_note_alert" : "Voulez-vous enregistrer les modifications?",
+    "unsaved_note_alert" : "Voulez-vous vraiment supprimer les modifications non enregistrées?",
+    "delete_note_alert" : "Voulez-vous vraiment supprimer cette note ??",
+    "alert_dialog_negative" : "Non",
+    "alert_dialog_positive" : "Oui",
+    "alert_empty_title" : "Entrez le titre de la note",
+    "alert_empty_body" : "Entrez les détails de la note",
+    "red" : "red",
+    "orange" : "orange",
+    "yellow" : "yellow",
+    "green" : "green",
+    "blue" : "blue",
+    "indigo" : "indigo",
+    "white" : "white",
+    "page_not_found" : "Page Non Trouvée"
 }

@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
+import 'package:notes/constants/colors.dart';
 import '../../routes/route_names.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LaunchScreenMobile extends StatefulWidget {
   const LaunchScreenMobile({Key? key}) : super(key: key);
@@ -42,11 +44,13 @@ class LaunchScreenMobileState extends State<LaunchScreenMobile> with TickerProvi
         (AnimationStatus status) async {
           if (status == AnimationStatus.completed) {
             if (userBox.get('appOpened', defaultValue: false) == true) {
-              if (userBox.get('loggedIn') == true) {
-                Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
-              } else {
-                Navigator.pushReplacementNamed(context, RouteNames.loginScreenRoute);
-              }
+              // if (userBox.get('loggedIn') == true) {
+              //   Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'login'});
+              // } else {
+              //   Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'create'});
+              // }
+
+              Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
             } else {
               Navigator.pushReplacementNamed(context, RouteNames.onboardingScreenRoute);
             }
@@ -87,7 +91,59 @@ class LaunchScreenMobileState extends State<LaunchScreenMobile> with TickerProvi
     double _deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Container(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            colors: [
+              backgroundColor,
+              actionBarItemBackgroundColor,
+            ],
+          ),
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 4000),
+                curve: Curves.elasticOut,
+                height: _showLogo
+                    ? _deviceHeight / 2.5
+                    : _showBall
+                        ? _deviceHeight / 2
+                        : 20,
+              ),
+              AnimatedContainer(
+                duration: Duration(seconds: _showLogo ? 3 : 0),
+                curve: Curves.fastLinearToSlowEaseIn,
+                height: _showLogo ? _deviceHeight / 4 : 20,
+                width: _showLogo ? _deviceWidth : 20,
+                decoration: BoxDecoration(
+                  color: _showColor ? whiteNoteColor : Colors.transparent,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Center(
+                  child: SizeTransition(
+                    sizeFactor: _animation,
+                    axis: Axis.horizontal,
+                    axisAlignment: 0,
+                    child: Text(
+                      AppLocalizations.of(context)!.app_title,
+                      style: GoogleFonts.getFont(
+                        'Nunito',
+                        textStyle: TextStyle(
+                          color: appTitleColor,
+                          fontSize: 53.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
