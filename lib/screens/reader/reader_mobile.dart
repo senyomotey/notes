@@ -10,9 +10,9 @@ import '../../widgets/action_bar_button.dart';
 
 // ignore: must_be_immutable
 class ReaderScreenMobile extends StatefulWidget {
-  Note note;
+  // Note note;
 
-  ReaderScreenMobile({Key? key, required this.note}) : super(key: key);
+  ReaderScreenMobile({Key? key}) : super(key: key);
 
   @override
   State<ReaderScreenMobile> createState() => ReaderScreenMobileState();
@@ -26,7 +26,7 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    widget.note = objectbox.getNote(id: widget.note.id);
+    // widget.note = objectbox.getNote(id: widget.note.id);
   }
 
   @override
@@ -64,14 +64,14 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
                       ActionBarButton(
                         icon: Icon(Icons.delete, size: 24.0, color: whiteNoteColor),
                         onTap: () {
-                          value.deleteNote(context: context, id: widget.note.id);
+                          value.deleteNote(context: context, id: value.note.id);
                         },
                       ),
                       const SizedBox(width: 20.0),
                       ActionBarButton(
                         icon: Icon(Icons.edit, size: 24.0, color: whiteNoteColor),
                         onTap: () {
-                          value.openEditor(context: context, note: widget.note);
+                          value.openEditor(context: context, note: value.note);
                         },
                       ),
                     ],
@@ -81,14 +81,14 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
                   child: ListView(
                     children: [
                       Text(
-                        widget.note.title,
+                        value.note.title,
                         style: GoogleFonts.getFont(
                           'Nunito',
                           textStyle: const TextStyle(color: Colors.white, fontSize: 48.0, fontWeight: FontWeight.w400),
                         ),
                       ),
                       Text(
-                        widget.note.body,
+                        value.note.body,
                         style: GoogleFonts.getFont(
                           'Nunito',
                           textStyle: const TextStyle(color: Colors.white, fontSize: 23.0, fontWeight: FontWeight.w400),

@@ -16,6 +16,7 @@ enum NoteColor { red, orange, yellow, green, blue, indigo, white }
 class AppStateProvider with ChangeNotifier {
   // variables and functions for home screen
   List<Note> noteList = objectbox.getNotes();
+  late Note note;
 
   navigateToSearchScreen({required BuildContext context}) {
     Navigator.pushNamed(context, RouteNames.searchScreenRoute);
@@ -36,9 +37,22 @@ class AppStateProvider with ChangeNotifier {
       context: context,
       message: AppLocalizations.of(context)!.delete_note_alert,
       positveAction: () {
+        // delete note from db
         objectbox.removeNote(id: id);
 
+        // remove note from note list
         noteList.removeWhere((element) => element.id == id);
+
+        // if navigation was done from search screen, delete note from the search list
+        if (searchList.isNotEmpty) {
+          Note searchedNote = searchList.firstWhere((element) => element.id == id);
+
+          if (searchedNote != null) {
+            searchList.removeWhere((element) => element.id == id);
+          }
+        }
+
+        noteList.sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
         notifyListeners();
 
@@ -47,7 +61,7 @@ class AppStateProvider with ChangeNotifier {
     );
   }
 
-  readNote({required BuildContext context, required Note note}) {
+  readNote({required BuildContext context}) {
     Navigator.pushNamed(context, RouteNames.readScreenRoute, arguments: {'note': note});
   }
 
@@ -57,13 +71,7 @@ class AppStateProvider with ChangeNotifier {
   }
 
   closeReader({required BuildContext context}) {
-    noteList = objectbox.getNotes();
-
-    notifyListeners();
-
     Navigator.pop(context, true);
-
-    notifyListeners();
   }
 
   // variables and functions for search screen
@@ -73,7 +81,12 @@ class AppStateProvider with ChangeNotifier {
 
   searchNote() {
     if (searchTextEditingController.text.isNotEmpty) {
-      searchList = objectbox.searchNotes(keyword: searchTextEditingController.text);
+      // searchList = objectbox.searchNotes(keyword: searchTextEditingController.text);
+      searchList.clear();
+      searchList.addAll(objectbox.searchNotes(keyword: searchTextEditingController.text));
+      // searchList.addAll(noteList.where((element) =>
+      //     element.title.toLowerCase().contains(searchTextEditingController.text.toLowerCase()) ||
+      //     element.body.toLowerCase().contains(searchTextEditingController.text.toLowerCase())));
 
       if (searchList.isEmpty) {
         noResults = true;
@@ -330,7 +343,7 @@ class AppStateProvider with ChangeNotifier {
     );
   }
 
-  saveNote({required BuildContext context, required Note note}) async {
+  saveNote({required BuildContext context, required Note note_}) async {
     if (titleTextEditingController.text.isEmpty) {
       Notify().showSnackBar(
           message: AppLocalizations.of(context)!.alert_empty_title, color: errorSnackbarColor, context: context);
@@ -349,12 +362,38 @@ class AppStateProvider with ChangeNotifier {
       context: context,
       message: AppLocalizations.of(context)!.save_note_alert,
       positveAction: () {
+        // clear text fields
         titleTextEditingController.clear();
         bodyTextEditingController.clear();
 
-        objectbox.addNote(note: note);
+        // remove note from note list if it exists
+        // Note? note__ = noteList.firstWhere((element) => element.id == note_.id, orElse: () => null);
 
-        noteList.add(note);
+        // Note? note__ = noteList.firstWhere((element) => element.id == note_.id);
+
+        if (note_.id == note.id) {
+          noteList.removeWhere((element) => element.id == note_.id);
+        }
+
+        // add note to note list
+        noteList.add(note_);
+
+        // add note to db
+        objectbox.addNote(note: note_);
+
+        // update note object of this provider
+        note = note_;
+
+        // if navigation was done from search screen, update the search list
+        if (searchList.isNotEmpty) {
+          Note searchedNote = searchList.firstWhere((element) => element.id == note_.id);
+
+          if (searchedNote != null) {
+            searchList[searchList.indexWhere((element) => element.id == note_.id)] = note_;
+          }
+        }
+
+        noteList.sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
         notifyListeners();
 

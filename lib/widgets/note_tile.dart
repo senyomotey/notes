@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/providers/app_state_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../main.dart';
 import '../models/note.dart';
 
 class NoteTile extends StatelessWidget {
@@ -19,8 +17,8 @@ class NoteTile extends StatelessWidget {
       builder: (context, value, child) {
         return GestureDetector(
           onTap: () {
-            value.readNote(context: context, note: note);
-            value.fetchNotes();
+            value.note = note;
+            value.readNote(context: context);
           },
           child: Card(
             color: value.getNoteColor(noteColor: NoteColor.values.firstWhere((e) => e.name == note.color)),

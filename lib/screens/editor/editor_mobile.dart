@@ -114,7 +114,7 @@ class EditorScreenMobileState extends State<EditorScreenMobile> with WidgetsBind
                           _note.color = value.noteColor.name;
                           _note.createdAt = DateTime.now();
 
-                          value.saveNote(context: context, note: _note);
+                          value.saveNote(context: context, note_: _note);
                         },
                       ),
                     ],
