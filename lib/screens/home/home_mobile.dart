@@ -6,6 +6,7 @@ import 'package:notes/routes/route_names.dart';
 import 'package:notes/widgets/action_bar_button.dart';
 import 'package:notes/widgets/note_tile.dart';
 import 'package:provider/provider.dart';
+import '../../animations/delayed_display.dart';
 import '../../constants/colors.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -83,7 +84,10 @@ class HomeScreenMobileState extends State<HomeScreenMobile> with WidgetsBindingO
                           scrollDirection: Axis.vertical,
                           itemCount: value.noteList.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return NoteTile(note: value.noteList[index]);
+                            return DelayedDisplay(
+                              delay: Duration(milliseconds: 10 * index),
+                              child: NoteTile(note: value.noteList[index]),
+                            );
                           },
                         ),
                       )

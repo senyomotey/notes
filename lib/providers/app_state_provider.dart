@@ -367,10 +367,6 @@ class AppStateProvider with ChangeNotifier {
         bodyTextEditingController.clear();
 
         // remove note from note list if it exists
-        // Note? note__ = noteList.firstWhere((element) => element.id == note_.id, orElse: () => null);
-
-        // Note? note__ = noteList.firstWhere((element) => element.id == note_.id);
-
         if (note_.id == note.id) {
           noteList.removeWhere((element) => element.id == note_.id);
         }
