@@ -65,6 +65,26 @@ class AppStateProvider with ChangeNotifier {
     );
   }
 
+  removeNote({required int id}) {
+    // delete note from db
+    // objectbox.removeNote(id: id);
+    deleteNoteFirestore(id: id);
+
+    // remove note from note list
+    noteList.removeWhere((element) => element.id == id);
+
+    // if navigation was done from search screen, delete note from the search list
+    if (searchList.isNotEmpty) {
+      Note searchedNote = searchList.firstWhere((element) => element.id == id);
+
+      if (searchedNote != null) {
+        searchList.removeWhere((element) => element.id == id);
+      }
+    }
+
+    notifyListeners();
+  }
+
   readNote({required BuildContext context}) {
     Navigator.pushNamed(context, RouteNames.readScreenRoute, arguments: {'note': note});
   }
@@ -375,15 +395,19 @@ class AppStateProvider with ChangeNotifier {
         // add note to local db
         // objectbox.addNote(note: note_);
 
-        // remove note from note list if it exists
-        if (note_.id == note.id) {
-          noteList.removeWhere((element) => element.id == note_.id);
-
-          // update note in firestore
-          updateNoteFirestore(note_: note_);
-        } else {
-          // create note in firestore
+        if (noteList.isEmpty) {
           createNoteFirestore(note_: note_);
+        } else {
+          if (note_.id == note.id) {
+            // remove note from note list if it exists
+            noteList.removeWhere((element) => element.id == note_.id);
+
+            // update note in firestore
+            updateNoteFirestore(note_: note_);
+          } else {
+            // create note in firestore
+            createNoteFirestore(note_: note_);
+          }
         }
 
         // add note to note list
