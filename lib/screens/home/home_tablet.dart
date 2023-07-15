@@ -71,7 +71,8 @@ class HomeScreenTabletState extends State<HomeScreenTablet> with TickerProviderS
                 ),
                 value.noteList.isNotEmpty
                     ? Expanded(
-                        child: ListView.builder(
+                        child: ListView.separated(
+                          separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 30.0),
                           scrollDirection: Axis.vertical,
                           itemCount: value.noteList.length,
                           itemBuilder: (BuildContext context, int index) {

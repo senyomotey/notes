@@ -82,8 +82,8 @@ class HomeScreenMobileState extends State<HomeScreenMobile> with WidgetsBindingO
                 value.noteList.isNotEmpty
                     ? Expanded(
                         child: ListView.separated(
-                          scrollDirection: Axis.vertical,
                           separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 30.0),
+                          scrollDirection: Axis.vertical,
                           itemCount: value.noteList.length,
                           itemBuilder: (BuildContext context, int index) {
                             return DelayedDisplay(

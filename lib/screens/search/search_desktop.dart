@@ -81,7 +81,8 @@ class SearchScreenDesktopState extends State<SearchScreenDesktop> with TickerPro
                 ),
                 !value.noResults
                     ? Expanded(
-                        child: ListView.builder(
+                        child: ListView.separated(
+                          separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 30.0),
                           scrollDirection: Axis.vertical,
                           itemCount: value.searchList.length,
                           itemBuilder: (BuildContext context, int index) {
