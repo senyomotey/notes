@@ -71,7 +71,7 @@ class EditorScreenMobileState extends State<EditorScreenMobile> with WidgetsBind
                   child: Row(
                     children: [
                       ActionBarButton(
-                        icon: Icon(Icons.arrow_back, size: 24.0, color: actionBarItemIconColor),
+                        icon: Icon(Icons.arrow_back, size: 28.0, color: actionBarItemIconColor),
                         onTap: () {
                           value.closeEditor(context: context, note: _note);
                         },
@@ -107,7 +107,7 @@ class EditorScreenMobileState extends State<EditorScreenMobile> with WidgetsBind
                       ),
                       const SizedBox(width: 20.0),
                       ActionBarButton(
-                        icon: Icon(Icons.save, size: 24.0, color: actionBarItemIconColor),
+                        icon: Icon(Icons.save, size: 28.0, color: actionBarItemIconColor),
                         onTap: () {
                           _note.title = value.titleTextEditingController.text;
                           _note.body = value.bodyTextEditingController.text;

@@ -51,7 +51,7 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
                   child: Row(
                     children: [
                       ActionBarButton(
-                        icon: Icon(Icons.arrow_back, size: 24.0, color: actionBarItemIconColor),
+                        icon: Icon(Icons.arrow_back, size: 28.0, color: actionBarItemIconColor),
                         onTap: () {
                           value.closeReader(context: context);
                         },
@@ -60,14 +60,14 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
                         child: Container(),
                       ),
                       ActionBarButton(
-                        icon: Icon(Icons.delete, size: 24.0, color: whiteNoteColor),
+                        icon: Icon(Icons.delete, size: 28.0, color: whiteNoteColor),
                         onTap: () {
                           value.deleteNote(context: context, uuid: value.note.uuid);
                         },
                       ),
                       const SizedBox(width: 20.0),
                       ActionBarButton(
-                        icon: Icon(Icons.edit, size: 24.0, color: whiteNoteColor),
+                        icon: Icon(Icons.edit, size: 28.0, color: whiteNoteColor),
                         onTap: () {
                           value.openEditor(context: context, note: value.note);
                         },

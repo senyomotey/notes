@@ -215,7 +215,7 @@ class AppStateProvider with ChangeNotifier {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.circle, size: 24.0, color: redNoteColor),
+                      Icon(Icons.circle, size: 28.0, color: redNoteColor),
                       const SizedBox(width: 15.0),
                       Text(
                         AppLocalizations.of(context)!.red,
@@ -239,7 +239,7 @@ class AppStateProvider with ChangeNotifier {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.circle, size: 24.0, color: orangeNoteColor),
+                      Icon(Icons.circle, size: 28.0, color: orangeNoteColor),
                       const SizedBox(width: 15.0),
                       Text(
                         AppLocalizations.of(context)!.orange,
@@ -263,7 +263,7 @@ class AppStateProvider with ChangeNotifier {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.circle, size: 24.0, color: yellowNoteColor),
+                      Icon(Icons.circle, size: 28.0, color: yellowNoteColor),
                       const SizedBox(width: 15.0),
                       Text(
                         AppLocalizations.of(context)!.yellow,
@@ -287,7 +287,7 @@ class AppStateProvider with ChangeNotifier {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.circle, size: 24.0, color: greenNoteColor),
+                      Icon(Icons.circle, size: 28.0, color: greenNoteColor),
                       const SizedBox(width: 15.0),
                       Text(
                         AppLocalizations.of(context)!.green,
@@ -311,7 +311,7 @@ class AppStateProvider with ChangeNotifier {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.circle, size: 24.0, color: blueNoteColor),
+                      Icon(Icons.circle, size: 28.0, color: blueNoteColor),
                       const SizedBox(width: 15.0),
                       Text(
                         AppLocalizations.of(context)!.blue,
@@ -335,7 +335,7 @@ class AppStateProvider with ChangeNotifier {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.circle, size: 24.0, color: indigoNoteColor),
+                      Icon(Icons.circle, size: 28.0, color: indigoNoteColor),
                       const SizedBox(width: 15.0),
                       Text(
                         AppLocalizations.of(context)!.indigo,
@@ -359,7 +359,7 @@ class AppStateProvider with ChangeNotifier {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.circle, size: 24.0, color: whiteNoteColor),
+                      Icon(Icons.circle, size: 28.0, color: whiteNoteColor),
                       const SizedBox(width: 15.0),
                       Text(
                         AppLocalizations.of(context)!.white,

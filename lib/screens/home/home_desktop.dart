@@ -55,14 +55,14 @@ class HomeScreenDesktopState extends State<HomeScreenDesktop> with TickerProvide
                         ),
                       ),
                       ActionBarButton(
-                        icon: Icon(Icons.search, size: 24.0, color: actionBarItemIconColor),
+                        icon: Icon(Icons.search, size: 28.0, color: actionBarItemIconColor),
                         onTap: () {
                           value.navigateToSearchScreen(context: context);
                         },
                       ),
                       const SizedBox(width: 20.0),
                       ActionBarButton(
-                          icon: Icon(Icons.info, size: 24.0, color: actionBarItemIconColor),
+                          icon: Icon(Icons.info, size: 28.0, color: actionBarItemIconColor),
                           onTap: () {
                             value.navigateToInfoScreen(context: context);
                           }),

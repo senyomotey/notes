@@ -12,8 +12,9 @@ class ActionBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        height: 50.0,
-        width: 50.0,
+        // height: 53.0,
+        // width: 53.0,
+        padding: EdgeInsets.all(13.5),
         decoration: BoxDecoration(
           color: actionBarItemBackgroundColor,
           borderRadius: BorderRadius.circular(10),

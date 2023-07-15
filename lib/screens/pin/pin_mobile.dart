@@ -138,7 +138,7 @@ class PinScreenMobileState extends State<PinScreenMobile> /* with SingleTickerPr
             Visibility(
               visible: widget.mode == 'login' ? false : true,
               child: ActionBarButton(
-                icon: Icon(Icons.arrow_back, size: 24.0, color: actionBarItemIconColor),
+                icon: Icon(Icons.arrow_back, size: 28.0, color: actionBarItemIconColor),
                 onTap: () {
                   if (widget.mode == 'create') {
                     if (pin.isNotEmpty) {

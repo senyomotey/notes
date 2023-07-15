@@ -50,7 +50,7 @@ class InfoScreenMobileState extends State<InfoScreenMobile> with WidgetsBindingO
                   child: Row(
                     children: [
                       ActionBarButton(
-                        icon: Icon(Icons.arrow_back, size: 24.0, color: actionBarItemIconColor),
+                        icon: Icon(Icons.arrow_back, size: 28.0, color: actionBarItemIconColor),
                         onTap: () {
                           Navigator.pop(context);
                         },
