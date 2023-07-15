@@ -16,6 +16,9 @@ class RouteNames {
   // search screen
   static const String searchScreenRoute = '/search';
 
+  // read screen
+  static const String infoScreenRoute = '/info';
+
   // editor screen
   static const String editorScreenRoute = '/editor';
 

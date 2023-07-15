@@ -135,7 +135,7 @@ class Notify {
                           style: GoogleFonts.getFont(
                             'Nunito',
                             textStyle:
-                                const TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w700),
+                                TextStyle(color: positiveButtonColor, fontSize: 20.0, fontWeight: FontWeight.w700),
                           ),
                         )),
                   ),

@@ -61,7 +61,11 @@ class HomeScreenDesktopState extends State<HomeScreenDesktop> with TickerProvide
                         },
                       ),
                       const SizedBox(width: 20.0),
-                      ActionBarButton(icon: Icon(Icons.info, size: 24.0, color: actionBarItemIconColor), onTap: () {}),
+                      ActionBarButton(
+                          icon: Icon(Icons.info, size: 24.0, color: actionBarItemIconColor),
+                          onTap: () {
+                            value.navigateToInfoScreen(context: context);
+                          }),
                     ],
                   ),
                 ),

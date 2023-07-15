@@ -6,6 +6,7 @@ import 'package:notes/screens/search/search.dart';
 
 import '../constants/colors.dart';
 import '../screens/home/home.dart';
+import '../screens/info/info.dart';
 import '../screens/launch/launch.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/pin/pin.dart';
@@ -41,6 +42,9 @@ class RouteGenerator {
 
       case RouteNames.searchScreenRoute:
         return CupertinoPageRoute(builder: (_) => const SearchScreen());
+
+      case RouteNames.infoScreenRoute:
+        return CupertinoPageRoute(builder: (_) => const InfoScreen());
 
       case RouteNames.editorScreenRoute:
         if (settings.arguments != null) {

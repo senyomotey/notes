@@ -27,6 +27,10 @@ class AppStateProvider with ChangeNotifier {
     Navigator.pushNamed(context, RouteNames.editorScreenRoute);
   }
 
+  navigateToInfoScreen({required BuildContext context}) {
+    Navigator.pushNamed(context, RouteNames.infoScreenRoute);
+  }
+
   fetchNotes() {
     // noteList = objectbox.getNotes();
 

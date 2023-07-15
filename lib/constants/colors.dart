@@ -10,9 +10,9 @@ Color appTitleColor = Colors.white;
 
 Color textHintColor = const Color(0xFFCCCCCC);
 
-Color negativeButtonColor = const Color(0xFFFF0000);
+Color positiveButtonColor = Colors.white; // Color.fromARGB(255, 4, 222, 102);
 
-Color positiveButtonColor = const Color.fromARGB(255, 4, 222, 102);
+Color negativeButtonColor = Colors.redAccent; // const Color(0xFFFF0000);
 
 Color errorSnackbarColor = const Color.fromARGB(255, 174, 1, 1);
 

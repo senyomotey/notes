@@ -152,37 +152,39 @@ class OnboardingScreenDesktopState extends State<OnboardingScreenDesktop> with T
                   ),
                 ),
               ),
-              Row(children: [
-                Ink(
-                  decoration: const ShapeDecoration(
-                    color: Color.fromARGB(255, 233, 233, 233),
-                    shape: CircleBorder(),
+              Row(
+                children: [
+                  Ink(
+                    decoration: const ShapeDecoration(
+                      color: Colors.redAccent,
+                      shape: CircleBorder(),
+                    ),
+                    child: IconButton.filled(
+                      isSelected: true,
+                      icon: const Icon(Icons.arrow_left),
+                      iconSize: 35.0,
+                      color: Colors.white,
+                      selectedIcon: const Icon(Icons.arrow_left),
+                      onPressed: previousFuntion,
+                    ),
                   ),
-                  child: IconButton.filled(
-                    isSelected: true,
-                    icon: const Icon(Icons.arrow_left),
-                    iconSize: 35.0,
-                    color: Colors.redAccent,
-                    selectedIcon: const Icon(Icons.arrow_left),
-                    onPressed: previousFuntion,
+                  const SizedBox(width: 20.0),
+                  Ink(
+                    decoration: const ShapeDecoration(
+                      color: Colors.redAccent,
+                      shape: CircleBorder(),
+                    ),
+                    child: IconButton.filled(
+                      isSelected: true,
+                      icon: const Icon(Icons.arrow_right),
+                      iconSize: 35.0,
+                      color: Colors.white,
+                      selectedIcon: const Icon(Icons.arrow_right),
+                      onPressed: nextFuntion,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 20.0),
-                Ink(
-                  decoration: const ShapeDecoration(
-                    color: Colors.redAccent,
-                    shape: CircleBorder(),
-                  ),
-                  child: IconButton.filled(
-                    isSelected: true,
-                    icon: const Icon(Icons.arrow_right),
-                    iconSize: 35.0,
-                    color: Colors.white,
-                    selectedIcon: const Icon(Icons.arrow_right),
-                    onPressed: nextFuntion,
-                  ),
-                ),
-              ]),
+                ],
+              ),
             ],
           )
         ]),

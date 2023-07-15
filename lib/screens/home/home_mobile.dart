@@ -73,7 +73,11 @@ class HomeScreenMobileState extends State<HomeScreenMobile> with WidgetsBindingO
                         },
                       ),
                       const SizedBox(width: 20.0),
-                      ActionBarButton(icon: Icon(Icons.info, size: 24.0, color: actionBarItemIconColor), onTap: () {}),
+                      ActionBarButton(
+                          icon: Icon(Icons.info, size: 24.0, color: actionBarItemIconColor),
+                          onTap: () {
+                            value.navigateToInfoScreen(context: context);
+                          }),
                     ],
                   ),
                 ),
