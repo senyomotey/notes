@@ -24,6 +24,16 @@ class AppStateProvider with ChangeNotifier {
   }
 
   navigateToEditorScreen({required BuildContext context}) {
+    note = Note(
+        id: 0,
+        uuid: '',
+        title: '',
+        body: '',
+        color: 'yellow',
+        syncAction: '',
+        syncStatus: false,
+        createdAt: DateTime.now());
+
     Navigator.pushNamed(context, RouteNames.editorScreenRoute);
   }
 
@@ -39,24 +49,24 @@ class AppStateProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  deleteNote({required BuildContext context, required int id}) {
+  deleteNote({required BuildContext context, required String uuid}) {
     Notify().showConfirmationDialog(
       context: context,
       message: AppLocalizations.of(context)!.delete_note_alert,
       positveAction: () {
         // delete note from db
         // objectbox.removeNote(id: id);
-        deleteNoteFirestore(id: id);
+        deleteNoteFirestore(uuid: uuid);
 
         // remove note from note list
-        noteList.removeWhere((element) => element.id == id);
+        noteList.removeWhere((element) => element.uuid == uuid);
 
         // if navigation was done from search screen, delete note from the search list
         if (searchList.isNotEmpty) {
-          Note searchedNote = searchList.firstWhere((element) => element.id == id);
+          Note searchedNote = searchList.firstWhere((element) => element.uuid == uuid);
 
           if (searchedNote != null) {
-            searchList.removeWhere((element) => element.id == id);
+            searchList.removeWhere((element) => element.uuid == uuid);
           }
         }
 
@@ -69,20 +79,20 @@ class AppStateProvider with ChangeNotifier {
     );
   }
 
-  removeNote({required int id}) {
+  removeNote({required String uuid}) {
     // delete note from db
     // objectbox.removeNote(id: id);
-    deleteNoteFirestore(id: id);
+    deleteNoteFirestore(uuid: uuid);
 
     // remove note from note list
-    noteList.removeWhere((element) => element.id == id);
+    noteList.removeWhere((element) => element.uuid == uuid);
 
     // if navigation was done from search screen, delete note from the search list
     if (searchList.isNotEmpty) {
-      Note searchedNote = searchList.firstWhere((element) => element.id == id);
+      Note searchedNote = searchList.firstWhere((element) => element.uuid == uuid);
 
       if (searchedNote != null) {
-        searchList.removeWhere((element) => element.id == id);
+        searchList.removeWhere((element) => element.uuid == uuid);
       }
     }
 
@@ -399,12 +409,12 @@ class AppStateProvider with ChangeNotifier {
         // add note to local db
         // objectbox.addNote(note: note_);
 
-        if (noteList.isEmpty) {
+        if (note.uuid.isEmpty) {
           createNoteFirestore(note_: note_);
         } else {
-          if (note_.id == note.id) {
+          if (note_.uuid == note.uuid) {
             // remove note from note list if it exists
-            noteList.removeWhere((element) => element.id == note_.id);
+            noteList.removeWhere((element) => element.uuid == note_.uuid);
 
             // update note in firestore
             updateNoteFirestore(note_: note_);
@@ -422,10 +432,10 @@ class AppStateProvider with ChangeNotifier {
 
         // if navigation was done from search screen, update the search list
         if (searchList.isNotEmpty) {
-          Note searchedNote = searchList.firstWhere((element) => element.id == note_.id);
+          Note searchedNote = searchList.firstWhere((element) => element.uuid == note_.uuid);
 
           if (searchedNote != null) {
-            searchList[searchList.indexWhere((element) => element.id == note_.id)] = note_;
+            searchList[searchList.indexWhere((element) => element.uuid == note_.uuid)] = note_;
           }
         }
 
@@ -457,7 +467,7 @@ class AppStateProvider with ChangeNotifier {
   }
 
   createNoteFirestore({required Note note_}) async {
-    await firestore.collection('notes').doc(note_.id.toString()).set(note_.toJson());
+    await firestore.collection('notes').doc(note_.uuid.toString()).set(note_.toJson());
   }
 
   List<Note> readNotesFirestore() {
@@ -480,10 +490,10 @@ class AppStateProvider with ChangeNotifier {
   }
 
   updateNoteFirestore({required Note note_}) async {
-    await firestore.collection('notes').doc(note_.id.toString()).update(note_.toJson());
+    await firestore.collection('notes').doc(note_.uuid.toString()).update(note_.toJson());
   }
 
-  deleteNoteFirestore({required int id}) async {
-    await firestore.collection('notes').doc(id.toString()).delete();
+  deleteNoteFirestore({required String uuid}) async {
+    await firestore.collection('notes').doc(uuid.toString()).delete();
   }
 }

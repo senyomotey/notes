@@ -49,7 +49,7 @@ class ReaderScreenTabletState extends State<ReaderScreenTablet> with TickerProvi
                       ActionBarButton(
                         icon: Icon(Icons.delete, size: 24.0, color: whiteNoteColor),
                         onTap: () {
-                          value.deleteNote(context: context, id: value.note.id);
+                          value.deleteNote(context: context, uuid: value.note.uuid);
                         },
                       ),
                       const SizedBox(width: 20.0),

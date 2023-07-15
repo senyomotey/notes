@@ -26,9 +26,7 @@ class HomeScreenMobileState extends State<HomeScreenMobile> with WidgetsBindingO
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    appStateProvider.fetchNotes();
-  }
+  void didChangeAppLifecycleState(AppLifecycleState state) {}
 
   @override
   void dispose() {

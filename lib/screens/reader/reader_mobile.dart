@@ -24,7 +24,7 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    // widget.note = objectbox.getNote(id: widget.note.id);
+    // widget.note = objectbox.getNote(uuid: widget.note.uuid);
   }
 
   @override
@@ -62,7 +62,7 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
                       ActionBarButton(
                         icon: Icon(Icons.delete, size: 24.0, color: whiteNoteColor),
                         onTap: () {
-                          value.deleteNote(context: context, id: value.note.id);
+                          value.deleteNote(context: context, uuid: value.note.uuid);
                         },
                       ),
                       const SizedBox(width: 20.0),

@@ -22,7 +22,7 @@ class InfoScreenMobileState extends State<InfoScreenMobile> with WidgetsBindingO
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    // widget.note = objectbox.getNote(id: widget.note.id);
+    // widget.note = objectbox.getNote(uuid: widget.note.uuid);
   }
 
   @override

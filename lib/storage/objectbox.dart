@@ -42,13 +42,11 @@ class ObjectBox {
 
     final List<Note> results = query.find();
 
-    log('searchNotes: $results');
-
     return results;
   }
 
-  Note getNote({required int id}) {
-    final query = store.box<Note>().query(Note_.id.equals(id)).build();
+  Note getNote({required String uuid}) {
+    final query = store.box<Note>().query(Note_.uuid.equals(uuid)).build();
     final List<Note> results = query.find();
 
     return results.first;

@@ -18,16 +18,16 @@ class NoteTile extends StatelessWidget {
     return Consumer<AppStateProvider>(
       builder: (context, value, child) {
         return Slidable(
-          key: ValueKey(note.id),
+          key: ValueKey(note.uuid),
           endActionPane: ActionPane(
             motion: const ScrollMotion(),
             dismissible: DismissiblePane(onDismissed: () {
-              appStateProvider.removeNote(id: note.id);
+              appStateProvider.removeNote(uuid: note.uuid);
             }),
             children: [
               SlidableAction(
                 onPressed: (context) {
-                  appStateProvider.removeNote(id: note.id);
+                  appStateProvider.removeNote(uuid: note.uuid);
                 },
                 backgroundColor: const Color(0xFFFE4A49),
                 foregroundColor: Colors.white,
