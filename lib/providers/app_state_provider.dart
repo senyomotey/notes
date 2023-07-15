@@ -468,6 +468,8 @@ class AppStateProvider with ChangeNotifier {
 
   createNoteFirestore({required Note note_}) async {
     await firestore.collection('notes').doc(note_.uuid.toString()).set(note_.toJson());
+
+    return true;
   }
 
   List<Note> readNotesFirestore() {
@@ -491,9 +493,13 @@ class AppStateProvider with ChangeNotifier {
 
   updateNoteFirestore({required Note note_}) async {
     await firestore.collection('notes').doc(note_.uuid.toString()).update(note_.toJson());
+
+    return true;
   }
 
   deleteNoteFirestore({required String uuid}) async {
     await firestore.collection('notes').doc(uuid.toString()).delete();
+
+    return true;
   }
 }

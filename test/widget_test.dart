@@ -9,22 +9,65 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:notes/main.dart';
+import 'package:notes/models/note.dart';
+import 'package:uuid/uuid.dart';
 
 Future<void> main() async {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const NotesApp());
+  // Create a sample note
+  Note note = Note(
+      id: 0,
+      uuid: const Uuid().v4(),
+      title: 'Test Note 1',
+      body: 'This is a test note',
+      color: 'yellow',
+      syncAction: 'create',
+      syncStatus: true,
+      createdAt: DateTime.now());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('Save Note Test', () {
+    // Call the function responsible for saving the note
+    bool isNoteSaved = appStateProvider.createNoteFirestore(note_: note);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Verify that the note is saved successfully
+    expect(isNoteSaved, true);
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('Read All Notes Test', () {
+    // Create some sample notes
+    List<Note> expectedNotes = [
+      note,
+    ];
+
+    // Call the function responsible for reading all notes
+    List<Note> actualNotes = appStateProvider.readNotesFirestore();
+
+    // Verify that the actual notes match the expected notes
+    expect(actualNotes, expectedNotes);
+  });
+
+  test('Update Note Test', () {
+    note = Note(
+        id: 0,
+        uuid: note.uuid,
+        title: 'Test Note 2',
+        body: 'This is another test note',
+        color: 'green',
+        syncAction: 'update',
+        syncStatus: true,
+        createdAt: DateTime.now());
+
+    // Call the function responsible for updating the note
+    bool isNoteUpdated = appStateProvider.updateNoteFirestore(note_: note);
+
+    // Verify that the note is updated successfully
+    expect(isNoteUpdated, true);
+  });
+
+  test('Delete Note Test', () {
+    // Call the function responsible for deleting the note
+    bool isNoteUpdated = appStateProvider.deleteNoteFirestore(uuid: note.uuid);
+
+    // Verify that the note is updated successfully
+    expect(isNoteUpdated, true);
   });
 }
