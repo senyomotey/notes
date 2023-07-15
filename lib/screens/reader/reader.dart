@@ -13,10 +13,10 @@ class ReaderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(
+    return const Responsive(
       mobile: ReaderScreenMobile(),
-      tablet: const ReaderScreenTablet(),
-      desktop: const ReaderScreenDesktop(),
+      tablet: ReaderScreenTablet(),
+      desktop: ReaderScreenDesktop(),
     );
   }
 }

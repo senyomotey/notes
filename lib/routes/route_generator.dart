@@ -37,7 +37,7 @@ class RouteGenerator {
         );
 
       case RouteNames.homeScreenRoute:
-        return CupertinoPageRoute(builder: (_) => HomeScreen());
+        return CupertinoPageRoute(builder: (_) => const HomeScreen());
 
       case RouteNames.searchScreenRoute:
         return CupertinoPageRoute(builder: (_) => const SearchScreen());
@@ -50,7 +50,7 @@ class RouteGenerator {
 
           return CupertinoPageRoute(builder: (_) => EditorScreen(note: note));
         } else {
-          return CupertinoPageRoute(builder: (_) => EditorScreen());
+          return CupertinoPageRoute(builder: (_) => const EditorScreen());
         }
       case RouteNames.readScreenRoute:
         final Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;

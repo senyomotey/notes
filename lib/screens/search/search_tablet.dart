@@ -1,11 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
-import '../../routes/route_names.dart';
 
 class SearchScreenTablet extends StatefulWidget {
   const SearchScreenTablet({Key? key}) : super(key: key);
@@ -21,14 +15,9 @@ class SearchScreenTabletState extends State<SearchScreenTablet> with TickerProvi
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    double deviceHeight = MediaQuery.of(context).size.height;
+    // double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Container(),

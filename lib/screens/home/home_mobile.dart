@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notes/providers/app_state_provider.dart';
-import 'package:notes/routes/route_names.dart';
 import 'package:notes/widgets/action_bar_button.dart';
 import 'package:notes/widgets/note_tile.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +13,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../main.dart';
 
 class HomeScreenMobile extends StatefulWidget {
-  HomeScreenMobile({Key? key}) : super(key: key);
+  const HomeScreenMobile({Key? key}) : super(key: key);
 
   @override
   State<HomeScreenMobile> createState() => HomeScreenMobileState();

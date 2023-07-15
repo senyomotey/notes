@@ -44,11 +44,8 @@ class OnboardingScreenMobileState extends State<OnboardingScreenMobile> with Tic
   @override
   void initState() {
     super.initState();
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
+    userBox = Hive.box('user');
   }
 
   @override
@@ -99,7 +96,7 @@ class OnboardingScreenMobileState extends State<OnboardingScreenMobile> with Tic
                 children: <Widget>[
                   DelayedDisplay(
                     delay: const Duration(milliseconds: 30),
-                    child: Container(
+                    child: SizedBox(
                       height: deviceWidth * 0.8,
                       width: deviceHeight * 0.6,
                       child: SvgPicture.asset(slideList[i].sliderImagePath),
@@ -214,7 +211,7 @@ class OnboardingScreenMobileState extends State<OnboardingScreenMobile> with Tic
   }
 
   finishFunction() {
-    // userBox.put('appOpened', true);
+    userBox.put('appOpened', true);
 
     // Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'create'});
 

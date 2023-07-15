@@ -15,14 +15,8 @@ class OnboardingScreenTabletState extends State<OnboardingScreenTablet> with Tic
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Container(),

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:objectbox/objectbox.dart';
 
 @Entity()
@@ -22,4 +23,28 @@ class Note {
     required this.syncStatus,
     required this.createdAt,
   });
+
+  factory Note.fromJson(Map<String, dynamic> json) {
+    return Note(
+      id: json['id'],
+      uuid: json['uuid'],
+      title: json['title'],
+      body: json['body'],
+      color: json['color'],
+      syncAction: json['syncAction'],
+      syncStatus: json['syncStatus'],
+      createdAt: DateFormat('yyyy-MM-dd HH:mm:ss').parse(json['createdAt']),
+    );
+  }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        "id": id,
+        "uuid": uuid,
+        "title": title,
+        "body": body,
+        "color": color,
+        "syncAction": syncAction,
+        "syncStatus": syncStatus,
+        "createdAt": createdAt.toString(),
+      };
 }

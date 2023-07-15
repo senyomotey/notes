@@ -29,6 +29,13 @@
             {
               "client_id": "128152368571-92l2njdnlugapsk4nd3t9map2t1bfqj9.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "128152368571-8mo23crn3v0317p5lol2n4l30md91jau.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codehaven.notes"
+              }
             }
           ]
         }

@@ -37,19 +37,19 @@ class UserAdapter extends TypeAdapter<User> {
   // }
 
   @override
-  void write(BinaryWriter writer, User user) {
+  void write(BinaryWriter writer, User obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
-      ..write(user.uuid)
+      ..write(obj.uuid)
       ..writeByte(1)
-      ..write(user.username)
+      ..write(obj.username)
       ..writeByte(2)
-      ..write(user.firstname)
+      ..write(obj.firstname)
       ..writeByte(3)
-      ..write(user.lastname)
+      ..write(obj.lastname)
       ..writeByte(4)
-      ..write(user.pin);
+      ..write(obj.pin);
   }
 
   // @override

@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 import '../models/note.dart';
 
 class NoteTile extends StatelessWidget {
-  Note note;
+  final Note note;
 
-  NoteTile({super.key, required this.note});
+  const NoteTile({super.key, required this.note});
 
   @override
   Widget build(BuildContext context) {

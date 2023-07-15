@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notes/constants/colors.dart';
 import 'package:provider/provider.dart';
-import '../../main.dart';
-import '../../models/note.dart';
 import '../../providers/app_state_provider.dart';
 import '../../widgets/action_bar_button.dart';
 
@@ -12,7 +10,7 @@ import '../../widgets/action_bar_button.dart';
 class ReaderScreenMobile extends StatefulWidget {
   // Note note;
 
-  ReaderScreenMobile({Key? key}) : super(key: key);
+  const ReaderScreenMobile({Key? key}) : super(key: key);
 
   @override
   State<ReaderScreenMobile> createState() => ReaderScreenMobileState();

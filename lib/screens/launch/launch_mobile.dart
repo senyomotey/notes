@@ -87,8 +87,8 @@ class LaunchScreenMobileState extends State<LaunchScreenMobile> with TickerProvi
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    double _deviceWidth = MediaQuery.of(context).size.width;
-    double _deviceHeight = MediaQuery.of(context).size.height;
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Container(
@@ -107,16 +107,16 @@ class LaunchScreenMobileState extends State<LaunchScreenMobile> with TickerProvi
                 duration: const Duration(milliseconds: 4000),
                 curve: Curves.elasticOut,
                 height: _showLogo
-                    ? _deviceHeight / 2.5
+                    ? deviceHeight / 2.5
                     : _showBall
-                        ? _deviceHeight / 2
+                        ? deviceHeight / 2
                         : 20,
               ),
               AnimatedContainer(
                 duration: Duration(seconds: _showLogo ? 3 : 0),
                 curve: Curves.fastLinearToSlowEaseIn,
-                height: _showLogo ? _deviceHeight / 4 : 20,
-                width: _showLogo ? _deviceWidth : 20,
+                height: _showLogo ? deviceHeight / 4 : 20,
+                width: _showLogo ? deviceWidth : 20,
                 decoration: BoxDecoration(
                   color: _showColor ? whiteNoteColor : Colors.transparent,
                   borderRadius: BorderRadius.circular(30),

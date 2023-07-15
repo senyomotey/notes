@@ -10,7 +10,7 @@ import '../../widgets/note_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchScreenMobile extends StatefulWidget {
-  SearchScreenMobile({Key? key}) : super(key: key);
+  const SearchScreenMobile({Key? key}) : super(key: key);
 
   @override
   State<SearchScreenMobile> createState() => SearchScreenMobileState();
@@ -58,7 +58,7 @@ class SearchScreenMobileState extends State<SearchScreenMobile> with WidgetsBind
                         'Nunito',
                         textStyle: const TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w300),
                       ),
-                      onChanged: (_value) {
+                      onChanged: (value_) {
                         value.searchNote();
                       },
                       decoration: InputDecoration(

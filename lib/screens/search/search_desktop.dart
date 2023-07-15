@@ -15,14 +15,9 @@ class SearchScreenDesktopState extends State<SearchScreenDesktop> with TickerPro
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    double deviceHeight = MediaQuery.of(context).size.height;
+    // double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Container(),

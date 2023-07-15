@@ -1,10 +1,12 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notes/main.dart';
 import 'package:notes/routes/route_names.dart';
 import 'package:notes/utilities/notify.dart';
-import 'package:provider/provider.dart';
 
 import '../constants/colors.dart';
 import '../models/note.dart';
@@ -15,7 +17,7 @@ enum NoteColor { red, orange, yellow, green, blue, indigo, white }
 
 class AppStateProvider with ChangeNotifier {
   // variables and functions for home screen
-  List<Note> noteList = objectbox.getNotes();
+  late List<Note> noteList;
   late Note note;
 
   navigateToSearchScreen({required BuildContext context}) {
@@ -27,7 +29,9 @@ class AppStateProvider with ChangeNotifier {
   }
 
   fetchNotes() {
-    noteList = objectbox.getNotes();
+    // noteList = objectbox.getNotes();
+
+    noteList = readNotesFirestore();
 
     notifyListeners();
   }
@@ -38,7 +42,8 @@ class AppStateProvider with ChangeNotifier {
       message: AppLocalizations.of(context)!.delete_note_alert,
       positveAction: () {
         // delete note from db
-        objectbox.removeNote(id: id);
+        // objectbox.removeNote(id: id);
+        deleteNoteFirestore(id: id);
 
         // remove note from note list
         noteList.removeWhere((element) => element.id == id);
@@ -81,12 +86,11 @@ class AppStateProvider with ChangeNotifier {
 
   searchNote() {
     if (searchTextEditingController.text.isNotEmpty) {
-      // searchList = objectbox.searchNotes(keyword: searchTextEditingController.text);
       searchList.clear();
-      searchList.addAll(objectbox.searchNotes(keyword: searchTextEditingController.text));
-      // searchList.addAll(noteList.where((element) =>
-      //     element.title.toLowerCase().contains(searchTextEditingController.text.toLowerCase()) ||
-      //     element.body.toLowerCase().contains(searchTextEditingController.text.toLowerCase())));
+      // searchList.addAll(objectbox.searchNotes(keyword: searchTextEditingController.text));
+      searchList.addAll(noteList.where((element) =>
+          element.title.toLowerCase().contains(searchTextEditingController.text.toLowerCase()) ||
+          element.body.toLowerCase().contains(searchTextEditingController.text.toLowerCase())));
 
       if (searchList.isEmpty) {
         noResults = true;
@@ -361,21 +365,30 @@ class AppStateProvider with ChangeNotifier {
     Notify().showConfirmationDialog(
       context: context,
       message: AppLocalizations.of(context)!.save_note_alert,
-      positveAction: () {
+      positveAction: () async {
         // clear text fields
         titleTextEditingController.clear();
         bodyTextEditingController.clear();
 
+        // save note in firebase
+        createNoteFirestore(note_: note_);
+
+        // add note to local db
+        // objectbox.addNote(note: note_);
+
         // remove note from note list if it exists
         if (note_.id == note.id) {
           noteList.removeWhere((element) => element.id == note_.id);
+
+          // update note in firestore
+          updateNoteFirestore(note_: note_);
+        } else {
+          // create note in firestore
+          createNoteFirestore(note_: note_);
         }
 
         // add note to note list
         noteList.add(note_);
-
-        // add note to db
-        objectbox.addNote(note: note_);
 
         // update note object of this provider
         note = note_;
@@ -414,5 +427,36 @@ class AppStateProvider with ChangeNotifier {
     } else {
       Navigator.pop(context);
     }
+  }
+
+  createNoteFirestore({required Note note_}) async {
+    await firestore.collection('notes').doc(note_.id.toString()).set(note_.toJson());
+  }
+
+  List<Note> readNotesFirestore() {
+    List<Note> noteList_ = [];
+
+    firestore.collection('notes').get().then((QuerySnapshot snapshot) {
+      for (var doc in snapshot.docs) {
+        Note note_ = Note.fromJson(doc.data() as Map<String, dynamic>);
+        noteList_.add(note_);
+      }
+
+      noteList = noteList_;
+
+      notifyListeners();
+    }).catchError((e) {
+      log(e.toString());
+    });
+
+    return noteList_;
+  }
+
+  updateNoteFirestore({required Note note_}) async {
+    await firestore.collection('notes').doc(note_.id.toString()).update(note_.toJson());
+  }
+
+  deleteNoteFirestore({required int id}) async {
+    await firestore.collection('notes').doc(id.toString()).delete();
   }
 }

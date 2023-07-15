@@ -6,11 +6,11 @@ import 'home_mobile.dart';
 import 'home_tablet.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(
+    return const Responsive(
       mobile: HomeScreenMobile(),
       tablet: HomeScreenTablet(),
       desktop: HomeScreenDesktop(),

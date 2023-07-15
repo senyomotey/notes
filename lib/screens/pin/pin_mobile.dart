@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -313,7 +311,7 @@ class PinScreenMobileState extends State<PinScreenMobile> /* with SingleTickerPr
       width: 35.0,
       height: 45.0,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           border: Border(
               bottom: BorderSide(
         width: 2.0,
@@ -321,7 +319,7 @@ class PinScreenMobileState extends State<PinScreenMobile> /* with SingleTickerPr
       ))),
       child: Text(
         digit != null ? digit.toString() : "",
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 38.0,
           fontWeight: FontWeight.w400,
           color: Colors.white,

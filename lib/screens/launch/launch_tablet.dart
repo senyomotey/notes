@@ -2,8 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
+import 'package:notes/constants/colors.dart';
 import '../../routes/route_names.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LaunchScreenTablet extends StatefulWidget {
   const LaunchScreenTablet({Key? key}) : super(key: key);
@@ -83,11 +87,63 @@ class LaunchScreenTabletState extends State<LaunchScreenTablet> with TickerProvi
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    double _deviceWidth = MediaQuery.of(context).size.width;
-    double _deviceHeight = MediaQuery.of(context).size.height;
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Container(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            colors: [
+              backgroundColor,
+              actionBarItemBackgroundColor,
+            ],
+          ),
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 4000),
+                curve: Curves.elasticOut,
+                height: _showLogo
+                    ? deviceHeight / 2.5
+                    : _showBall
+                        ? deviceHeight / 2
+                        : 20,
+              ),
+              AnimatedContainer(
+                duration: Duration(seconds: _showLogo ? 3 : 0),
+                curve: Curves.fastLinearToSlowEaseIn,
+                height: _showLogo ? deviceHeight / 4 : 20,
+                width: _showLogo ? deviceWidth : 20,
+                decoration: BoxDecoration(
+                  color: _showColor ? whiteNoteColor : Colors.transparent,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Center(
+                  child: SizeTransition(
+                    sizeFactor: _animation,
+                    axis: Axis.horizontal,
+                    axisAlignment: 0,
+                    child: Text(
+                      AppLocalizations.of(context)!.app_title,
+                      style: GoogleFonts.getFont(
+                        'Nunito',
+                        textStyle: TextStyle(
+                          color: appTitleColor,
+                          fontSize: 53.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

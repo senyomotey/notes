@@ -22,7 +22,8 @@ class DelayedDisplay extends StatefulWidget {
   final bool fadeIn;
 
   /// DelayedDisplay constructor
-  DelayedDisplay({
+  const DelayedDisplay({
+    super.key,
     required this.child,
     this.delay = Duration.zero,
     this.fadingDuration = const Duration(milliseconds: 800),
@@ -114,11 +115,11 @@ class DelayedDisplayState extends State<DelayedDisplay> with TickerProviderState
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
+      opacity: opacityController,
       child: SlideTransition(
         position: slideAnimationOffset,
         child: widget.child,
       ),
-      opacity: opacityController,
     );
   }
 }
