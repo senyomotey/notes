@@ -20,16 +20,6 @@ class ReaderScreenTabletState extends State<ReaderScreenTablet> with TickerProvi
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    // widget.note = objectbox.getNote(id: widget.note.id);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     double deviceHeight = MediaQuery.of(context).size.height;

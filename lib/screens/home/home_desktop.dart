@@ -10,8 +10,6 @@ import '../../constants/colors.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../main.dart';
-
 class HomeScreenDesktop extends StatefulWidget {
   const HomeScreenDesktop({Key? key}) : super(key: key);
 
@@ -23,16 +21,6 @@ class HomeScreenDesktopState extends State<HomeScreenDesktop> with TickerProvide
   @override
   void initState() {
     super.initState();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    appStateProvider.fetchNotes();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override
