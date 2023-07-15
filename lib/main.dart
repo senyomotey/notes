@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'storage/firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ import 'routes/route_generator.dart';
 import 'routes/route_names.dart';
 import 'storage/objectbox.dart';
 
-late FirebaseDatabase firebaseDatabase;
 late FirebaseFirestore firestore;
 late ObjectBox objectbox;
 late AppStateProvider appStateProvider;
@@ -30,10 +28,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  firebaseDatabase = FirebaseDatabase.instance;
-  firebaseDatabase.setPersistenceEnabled(true);
-  firebaseDatabase.setLoggingEnabled(true);
 
   firestore = FirebaseFirestore.instance;
   firestore.settings = const Settings(

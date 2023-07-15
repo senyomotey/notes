@@ -50,7 +50,6 @@ dependencies:
   awesome_notifications: ^0.6.19
   flutter_slidable: ^3.0.0
   firebase_core: ^2.14.0
-  firebase_database: ^10.2.3
   cloud_firestore: ^4.8.2
   firebase_core_platform_interface: ^4.8.0
 
