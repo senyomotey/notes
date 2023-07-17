@@ -10,8 +10,6 @@ import '../../constants/colors.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../main.dart';
-
 class HomeScreenMobile extends StatefulWidget {
   const HomeScreenMobile({Key? key}) : super(key: key);
 

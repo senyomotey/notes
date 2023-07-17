@@ -91,7 +91,7 @@ class Notify {
                       backgroundColor: negativeButtonColor,
                       shadowColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(28.0),
                       ),
                     ),
                     onPressed: () {
@@ -118,7 +118,7 @@ class Notify {
                       backgroundColor: positiveButtonColor,
                       shadowColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(28.0),
                       ),
                     ),
                     onPressed: () {

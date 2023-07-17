@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../../constants/colors.dart';
@@ -21,6 +22,7 @@ class EditorScreenTablet extends StatefulWidget {
 }
 
 class EditorScreenTabletState extends State<EditorScreenTablet> with TickerProviderStateMixin {
+  Box userBox = Hive.box('user');
   late Note _note;
 
   @override
@@ -33,6 +35,7 @@ class EditorScreenTabletState extends State<EditorScreenTablet> with TickerProvi
       _note = Note(
         id: 0,
         uuid: const Uuid().v4(),
+        userUuid: userBox.get('uuid'),
         title: '',
         body: '',
         color: NoteColor.yellow.name,

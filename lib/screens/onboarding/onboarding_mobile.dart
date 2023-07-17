@@ -217,6 +217,6 @@ class OnboardingScreenMobileState extends State<OnboardingScreenMobile> with Tic
 
     // Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'create'});
 
-    Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
+    Navigator.pushReplacementNamed(context, RouteNames.loginScreenRoute);
   }
 }

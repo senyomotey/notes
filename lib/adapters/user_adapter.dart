@@ -11,45 +11,25 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   User read(BinaryReader reader) => User()
     ..uuid = reader.readString()
-    ..username = reader.readString()
-    ..firstname = reader.readString()
-    ..lastname = reader.readString()
-    ..pin = reader.readString();
-
-  // @override
-  // User read(BinaryReader reader) {
-  //   final numOfFields = reader.readByte();
-  //   final fields = <int, dynamic>{
-  //     for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-  //   };
-
-  //   return User()
-  //     ..uuid = fields[0] as String
-  //     ..token = fields[1] as String
-  //     ..phone = fields[2] as String
-  //     ..email = fields[3] as String
-  //     ..username = fields[4] as String
-  //     ..firstname = fields[5] as String
-  //     ..lastname = fields[6] as String
-  //     ..countryID = fields[7] as String
-  //     ..currencyID = fields[8] as String
-  //     ..createdAt = fields[9] as String;
-  // }
+    ..email = reader.readString()
+    ..token = reader.readString()
+    ..appOpened = reader.readString()
+    ..loggedIn = reader.readString();
 
   @override
   void write(BinaryWriter writer, User obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.uuid)
       ..writeByte(1)
-      ..write(obj.username)
+      ..write(obj.email)
       ..writeByte(2)
-      ..write(obj.firstname)
+      ..write(obj.token)
       ..writeByte(3)
-      ..write(obj.lastname)
+      ..write(obj.appOpened)
       ..writeByte(4)
-      ..write(obj.pin);
+      ..write(obj.loggedIn);
   }
 
   // @override

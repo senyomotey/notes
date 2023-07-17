@@ -8,8 +8,11 @@
     "save_note_alert" : "Do you want to save changes?",
     "unsaved_note_alert" : "Are you sure you want to discard the unsaved changes?",
     "delete_note_alert" : "Are you sure you want to delete this note?",
+    "signout_alert" : "Are you sure you want to sign out?",
     "alert_dialog_negative" : "No",
     "alert_dialog_positive" : "Yes",
+    "alert_empty_email" : "Enter your email",
+    "alert_empty_password" : "Enter your password",
     "alert_empty_title" : "Enter the title of the note",
     "alert_empty_body" : "Enter the details of the note",
     "red" : "red",
@@ -19,5 +22,15 @@
     "blue" : "blue",
     "indigo" : "indigo",
     "white" : "white",
-    "page_not_found" : "Page Not Found"
+    "page_not_found" : "Page Not Found",
+    "connection_error" : "Something went wrong",
+    "email" : "Email",
+    "password" : "Password",
+    "login" : "Login",
+    "signup" : "Sign up",
+    "signout" : "Sign out",
+    "no_account" : "Don't have an account?",
+    "have_account" : "Already have an account?",
+    "welcome_back" : "Welcome\nBack",
+    "get_started" : "Get\nStarted"
 }

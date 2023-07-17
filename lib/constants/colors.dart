@@ -16,10 +16,10 @@ Color negativeButtonColor = Colors.redAccent; // const Color(0xFFFF0000);
 
 Color errorSnackbarColor = const Color.fromARGB(255, 174, 1, 1);
 
-Color redNoteColor = Color.fromARGB(255, 248, 137, 137);
-Color orangeNoteColor = Colors.orangeAccent;
-Color yellowNoteColor = Color.fromARGB(255, 248, 248, 99);
-Color greenNoteColor = Color.fromARGB(255, 147, 245, 198);
-Color blueNoteColor = Color.fromARGB(255, 120, 169, 253);
-Color indigoNoteColor = Color.fromARGB(255, 135, 152, 245);
+Color redNoteColor = const Color.fromARGB(255, 248, 137, 137);
+Color orangeNoteColor = const Color.fromARGB(255, 249, 193, 120);
+Color yellowNoteColor = const Color.fromARGB(255, 248, 248, 99);
+Color greenNoteColor = const Color.fromARGB(255, 147, 245, 198);
+Color blueNoteColor = const Color.fromARGB(255, 120, 169, 253);
+Color indigoNoteColor = const Color.fromARGB(255, 135, 152, 245);
 Color whiteNoteColor = Colors.white;

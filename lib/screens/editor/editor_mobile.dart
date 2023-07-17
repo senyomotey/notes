@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../../constants/colors.dart';
@@ -21,6 +22,7 @@ class EditorScreenMobile extends StatefulWidget {
 }
 
 class EditorScreenMobileState extends State<EditorScreenMobile> with WidgetsBindingObserver {
+  Box userBox = Hive.box('user');
   late Note _note;
 
   @override
@@ -33,6 +35,7 @@ class EditorScreenMobileState extends State<EditorScreenMobile> with WidgetsBind
       _note = Note(
         id: 0,
         uuid: const Uuid().v4(),
+        userUuid: userBox.get('uuid'),
         title: '',
         body: '',
         color: NoteColor.yellow.name,

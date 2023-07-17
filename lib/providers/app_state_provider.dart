@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:notes/main.dart';
 import 'package:notes/routes/route_names.dart';
 import 'package:notes/utilities/notify.dart';
@@ -15,6 +16,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 enum NoteColor { red, orange, yellow, green, blue, indigo, white }
 
 class AppStateProvider with ChangeNotifier {
+  Box userBox = Hive.box('user');
+
   // variables and functions for home screen
   late List<Note> noteList;
   late Note note;
@@ -27,6 +30,7 @@ class AppStateProvider with ChangeNotifier {
     note = Note(
         id: 0,
         uuid: '',
+        userUuid: userBox.get('uuid'),
         title: '',
         body: '',
         color: 'yellow',
@@ -42,8 +46,6 @@ class AppStateProvider with ChangeNotifier {
   }
 
   fetchNotes() {
-    // noteList = objectbox.getNotes();
-
     noteList = readNotesFirestore();
 
     notifyListeners();
@@ -55,7 +57,6 @@ class AppStateProvider with ChangeNotifier {
       message: AppLocalizations.of(context)!.delete_note_alert,
       positveAction: () {
         // delete note from db
-        // objectbox.removeNote(id: id);
         deleteNoteFirestore(uuid: uuid);
 
         // remove note from note list
@@ -81,7 +82,6 @@ class AppStateProvider with ChangeNotifier {
 
   removeNote({required String uuid}) {
     // delete note from db
-    // objectbox.removeNote(id: id);
     deleteNoteFirestore(uuid: uuid);
 
     // remove note from note list
@@ -120,7 +120,6 @@ class AppStateProvider with ChangeNotifier {
   searchNote() {
     if (searchTextEditingController.text.isNotEmpty) {
       searchList.clear();
-      // searchList.addAll(objectbox.searchNotes(keyword: searchTextEditingController.text));
       searchList.addAll(noteList.where((element) =>
           element.title.toLowerCase().contains(searchTextEditingController.text.toLowerCase()) ||
           element.body.toLowerCase().contains(searchTextEditingController.text.toLowerCase())));
@@ -406,9 +405,6 @@ class AppStateProvider with ChangeNotifier {
         // save note in firebase
         createNoteFirestore(note_: note_);
 
-        // add note to local db
-        // objectbox.addNote(note: note_);
-
         if (note.uuid.isEmpty) {
           createNoteFirestore(note_: note_);
         } else {
@@ -475,7 +471,11 @@ class AppStateProvider with ChangeNotifier {
   List<Note> readNotesFirestore() {
     List<Note> noteList_ = [];
 
-    firestore.collection('notes').get().then((QuerySnapshot snapshot) {
+    firestore
+        .collection('notes')
+        .where('userUuid', isEqualTo: userBox.get('uuid'))
+        .get()
+        .then((QuerySnapshot snapshot) {
       for (var doc in snapshot.docs) {
         Note note_ = Note.fromJson(doc.data() as Map<String, dynamic>);
         noteList_.add(note_);

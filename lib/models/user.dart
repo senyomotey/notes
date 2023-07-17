@@ -6,14 +6,14 @@ class User extends HiveObject {
   late String uuid;
 
   @HiveField(1)
-  late String username;
+  late String email;
 
   @HiveField(2)
-  late String firstname;
+  late String token;
 
   @HiveField(3)
-  late String lastname;
+  late String appOpened;
 
   @HiveField(4)
-  late String pin;
+  late String loggedIn;
 }

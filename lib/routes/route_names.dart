@@ -7,7 +7,13 @@ class RouteNames {
   // onboarding screen
   static const String onboardingScreenRoute = '/onboardingScreen';
 
-  // auth
+  // login
+  static const String loginScreenRoute = '/loginScreen';
+
+  // sign up
+  static const String signUpScreenRoute = '/signUpScreen';
+
+  // pin
   static const String pinScreenRoute = '/pinScreen';
 
   // home screen

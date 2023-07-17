@@ -217,14 +217,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
-  cryptography:
-    dependency: transitive
-    description:
-      name: cryptography
-      sha256: df156c5109286340817d21fa7b62f9140f17915077127dd70f8bd7a2a0997a35
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.5.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -273,6 +265,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  firebase_auth:
+    dependency: "direct main"
+    description:
+      name: firebase_auth
+      sha256: "87216661b409575ecb1a7849da38604a0abfcb6497146b66d4832cb97a4c9e0f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.7.0"
+  firebase_auth_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_auth_platform_interface
+      sha256: "4ab0a8997994db2b76bf0652689d7908ca935a99314857c683251bc23d31c287"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.16.0"
+  firebase_auth_web:
+    dependency: transitive
+    description:
+      name: firebase_auth_web
+      sha256: c74c5753855896b31536b9e151e34bf7eea143f0d9c209947b5f7ddc8e111989
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.6.0"
   firebase_core:
     dependency: "direct main"
     description:
@@ -305,14 +321,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-  flat_buffers:
-    dependency: transitive
-    description:
-      name: flat_buffers
-      sha256: "23e2ced0d8e8ecdffbd9f267f49a668c74438393b9acaeac1c724123e3764263"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.5"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -541,30 +549,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-  objectbox:
-    dependency: "direct main"
-    description:
-      name: objectbox
-      sha256: e7b32bd32dce22b866a387649cbae2c9ca028ec533303ec4e72aa5bb15adfe19
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1-dev.2"
-  objectbox_flutter_libs:
-    dependency: "direct main"
-    description:
-      name: objectbox_flutter_libs
-      sha256: "82b8a0460d982f48ff6ac3f296378827762250b41524c9280deabd2e53dfe89c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1-dev.2"
-  objectbox_generator:
-    dependency: "direct dev"
-    description:
-      name: objectbox_generator
-      sha256: "32c169432f32730a7263c09ae5bbfbee25e232aa72130dc5a05da358cf8c5d45"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1-dev.2"
   package_config:
     dependency: transitive
     description:
@@ -794,14 +778,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
-  source_gen:
-    dependency: transitive
-    description:
-      name: source_gen
-      sha256: fc0da689e5302edb6177fdd964efcb7f58912f43c28c2047a808f5bfff643d16
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.4.0"
   source_span:
     dependency: transitive
     description:

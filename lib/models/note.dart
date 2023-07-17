@@ -1,10 +1,9 @@
 import 'package:intl/intl.dart';
-import 'package:objectbox/objectbox.dart';
 
-@Entity()
 class Note {
   int id; // id of the note
-  String uuid; // universal unique id ofthe note
+  String uuid; // universal unique id of the note
+  String userUuid; // universal unique id of the user
   String title; // title of the note
   String body; // details of the note
   String color; // background color of the note
@@ -16,6 +15,7 @@ class Note {
   Note({
     required this.id,
     required this.uuid,
+    required this.userUuid,
     required this.title,
     required this.body,
     required this.color,
@@ -28,6 +28,7 @@ class Note {
     return Note(
       id: json['id'],
       uuid: json['uuid'],
+      userUuid: json['userUuid'],
       title: json['title'],
       body: json['body'],
       color: json['color'],
@@ -40,6 +41,7 @@ class Note {
   Map<String, dynamic> toJson() => <String, dynamic>{
         "id": id,
         "uuid": uuid,
+        "userUuid": userUuid,
         "title": title,
         "body": body,
         "color": color,

@@ -23,9 +23,7 @@ class ReaderScreenMobileState extends State<ReaderScreenMobile> with WidgetsBind
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    // widget.note = objectbox.getNote(uuid: widget.note.uuid);
-  }
+  void didChangeAppLifecycleState(AppLifecycleState state) {}
 
   @override
   void dispose() {

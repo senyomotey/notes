@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'providers/user_state_provider.dart';
 import 'storage/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,16 +15,17 @@ import 'adapters/user_adapter.dart';
 import 'providers/app_state_provider.dart';
 import 'routes/route_generator.dart';
 import 'routes/route_names.dart';
-import 'storage/objectbox.dart';
 
 late FirebaseFirestore firestore;
-late ObjectBox objectbox;
+late UserStateProvider userStateProvider;
 late AppStateProvider appStateProvider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
+  Hive.registerAdapter(UserAdapter());
+  await Hive.openBox('user');
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -35,16 +37,8 @@ void main() async {
     cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
   );
 
-  objectbox = await ObjectBox.create();
+  userStateProvider = UserStateProvider();
   appStateProvider = AppStateProvider();
-
-  Hive.registerAdapter(UserAdapter());
-
-  try {
-    await Hive.openBox('user');
-  } catch (e) {
-    log(e.toString());
-  }
 
   runApp(const NotesApp());
 }
@@ -87,11 +81,11 @@ class NotesAppState extends State<NotesApp> with WidgetsBindingObserver {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(
+          value: userStateProvider,
+        ),
+        ChangeNotifierProvider.value(
           value: appStateProvider,
         ),
-        // ChangeNotifierProvider<UserProvider>.value(
-        //   value: UserProvider.initialize(),
-        // ),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -14,7 +14,7 @@ class ActionBarButton extends StatelessWidget {
       child: Container(
         // height: 53.0,
         // width: 53.0,
-        padding: EdgeInsets.all(13.5),
+        padding: const EdgeInsets.all(13.5),
         decoration: BoxDecoration(
           color: actionBarItemBackgroundColor,
           borderRadius: BorderRadius.circular(10),

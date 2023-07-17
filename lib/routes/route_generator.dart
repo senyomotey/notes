@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notes/screens/editor/editor.dart';
 import 'package:notes/screens/search/search.dart';
+import 'package:notes/screens/signup/signup.dart';
 
 import '../constants/colors.dart';
 import '../screens/home/home.dart';
 import '../screens/info/info.dart';
 import '../screens/launch/launch.dart';
+import '../screens/login/login.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/pin/pin.dart';
 import '../screens/reader/reader.dart';
@@ -26,30 +28,26 @@ class RouteGenerator {
         return CupertinoPageRoute(builder: (_) => const LaunchScreen());
       case RouteNames.onboardingScreenRoute:
         return CupertinoPageRoute(builder: (_) => const OnboardingScreen());
-
-      // auth
+      case RouteNames.loginScreenRoute:
+        return CupertinoPageRoute(builder: (_) => const LoginScreen());
+      case RouteNames.signUpScreenRoute:
+        return CupertinoPageRoute(builder: (_) => const SignUpScreen());
       case RouteNames.pinScreenRoute:
         final Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
-
         final mode = arguments['mode'];
 
         return CupertinoPageRoute(
           builder: (_) => PinScreen(mode: mode),
         );
-
       case RouteNames.homeScreenRoute:
         return CupertinoPageRoute(builder: (_) => const HomeScreen());
-
       case RouteNames.searchScreenRoute:
         return CupertinoPageRoute(builder: (_) => const SearchScreen());
-
       case RouteNames.infoScreenRoute:
         return CupertinoPageRoute(builder: (_) => const InfoScreen());
-
       case RouteNames.editorScreenRoute:
         if (settings.arguments != null) {
           final Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
-
           final note = arguments['note'];
 
           return CupertinoPageRoute(builder: (_) => EditorScreen(note: note));
@@ -58,7 +56,6 @@ class RouteGenerator {
         }
       case RouteNames.readScreenRoute:
         final Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
-
         final note = arguments['note'];
 
         return CupertinoPageRoute(builder: (_) => ReaderScreen(note: note));

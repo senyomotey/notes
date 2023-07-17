@@ -44,13 +44,11 @@ class LaunchScreenMobileState extends State<LaunchScreenMobile> with TickerProvi
         (AnimationStatus status) async {
           if (status == AnimationStatus.completed) {
             if (userBox.get('appOpened', defaultValue: false) == true) {
-              // if (userBox.get('loggedIn') == true) {
-              //   Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'login'});
-              // } else {
-              //   Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'create'});
-              // }
-
-              Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
+              if (userBox.get('loggedIn', defaultValue: false) == false) {
+                Navigator.pushReplacementNamed(context, RouteNames.loginScreenRoute);
+              } else {
+                Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
+              }
             } else {
               Navigator.pushReplacementNamed(context, RouteNames.onboardingScreenRoute);
             }

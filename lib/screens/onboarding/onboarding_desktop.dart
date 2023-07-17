@@ -217,6 +217,6 @@ class OnboardingScreenDesktopState extends State<OnboardingScreenDesktop> with T
 
     // Navigator.pushNamed(context, RouteNames.pinScreenRoute, arguments: {'mode': 'create'});
 
-    Navigator.pushReplacementNamed(context, RouteNames.homeScreenRoute);
+    Navigator.pushReplacementNamed(context, RouteNames.loginScreenRoute);
   }
 }

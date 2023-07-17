@@ -5,7 +5,6 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:notes/main.dart';
@@ -17,6 +16,7 @@ Future<void> main() async {
   Note note = Note(
       id: 0,
       uuid: const Uuid().v4(),
+      userUuid: const Uuid().v4(),
       title: 'Test Note 1',
       body: 'This is a test note',
       color: 'yellow',
@@ -49,6 +49,7 @@ Future<void> main() async {
     note = Note(
         id: 0,
         uuid: note.uuid,
+        userUuid: const Uuid().v4(),
         title: 'Test Note 2',
         body: 'This is another test note',
         color: 'green',

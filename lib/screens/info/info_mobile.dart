@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notes/constants/colors.dart';
 import 'package:provider/provider.dart';
-import '../../providers/app_state_provider.dart';
+import '../../providers/user_state_provider.dart';
 import '../../widgets/action_bar_button.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: must_be_immutable
 class InfoScreenMobile extends StatefulWidget {
@@ -21,9 +23,7 @@ class InfoScreenMobileState extends State<InfoScreenMobile> with WidgetsBindingO
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    // widget.note = objectbox.getNote(uuid: widget.note.uuid);
-  }
+  void didChangeAppLifecycleState(AppLifecycleState state) {}
 
   @override
   void dispose() {
@@ -35,7 +35,7 @@ class InfoScreenMobileState extends State<InfoScreenMobile> with WidgetsBindingO
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     double deviceHeight = MediaQuery.of(context).size.height;
 
-    return Consumer<AppStateProvider>(
+    return Consumer<UserStateProvider>(
       builder: (context, value, child) {
         return Scaffold(
           backgroundColor: backgroundColor,
@@ -98,6 +98,34 @@ class InfoScreenMobileState extends State<InfoScreenMobile> with WidgetsBindingO
                   ),
                 ),
                 Expanded(child: Container()),
+                Container(
+                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: positiveButtonColor,
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(28.0),
+                      ),
+                    ),
+                    onPressed: () {
+                      value.signOut(context: context);
+                    },
+                    child: Container(
+                      height: 55.0,
+                      alignment: Alignment.center,
+                      child: Text(
+                        AppLocalizations.of(context)!.signout,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont(
+                          'Nunito',
+                          textStyle: TextStyle(color: negativeButtonColor, fontSize: 23.0, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 25.0),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Text(
